@@ -1,0 +1,130 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+    .auth-card {
+        background: var(--card-bg, #ffffff) !important;
+        border: 1px solid var(--card-border, rgba(0,0,0,0.08)) !important;
+        border-radius: 20px;
+        box-shadow: var(--card-shadow, 0 15px 35px rgba(0,0,0,0.08)) !important;
+        backdrop-filter: blur(12px);
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        color: var(--text-primary, #0f172a) !important;
+        border: 1px solid rgba(148, 163, 184, 0.3) !important;
+        border-radius: 10px;
+    }
+
+    body.dark-theme .form-control {
+        background-color: rgba(15, 23, 42, 0.6) !important;
+        color: #f8fafc !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .form-control:focus {
+        border-color: #f59e0b !important;
+        box-shadow: 0 0 10px rgba(245, 158, 11, 0.3) !important;
+    }
+
+    .btn-action {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #ffffff;
+        font-weight: 700;
+        border-radius: 10px;
+        padding: 10px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-action:hover {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+</style>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5 col-lg-4">
+        <div class="card auth-card p-4">
+            <h3 class="mb-3 text-center fw-bold">Password Reset</h3>
+
+            <!-- RED WARNING ALERT -->
+            <% if (typeof errorMsg !== 'undefined' && errorMsg) { %>
+                <div class="alert alert-danger alert-dismissible fade show fw-bold text-center" role="alert">
+                    ⚠️ <%= errorMsg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <% } %>
+
+            <!-- GREEN SUCCESS ALERT -->
+            <% if (typeof successMsg !== 'undefined' && successMsg) { %>
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    ✅ <%= successMsg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <% } %>
+
+            <!-- STEP 1: Enter Username & Email -->
+            <% if (typeof step === 'undefined' || step === 1) { %>
+                <form action="/send-otp" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Enter username" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Registered Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter registered email" required />
+                    </div>
+                    <button class="btn btn-action w-100">Send OTP to Email</button>
+                </form>
+            <% } %>
+
+            <!-- STEP 2: Enter OTP -->
+            <% if (typeof step !== 'undefined' && step === 2) { %>
+                <form action="/verify-otp" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Enter OTP Sent to Email</label>
+                        <input type="text" name="otp" class="form-control" placeholder="e.g. 4821" required autofocus />
+                    </div>
+                    <button class="btn btn-action w-100">Verify OTP</button>
+                </form>
+            <% } %>
+
+            <!-- STEP 3: Enter New Password -->
+            <% if (typeof step !== 'undefined' && step === 3) { %>
+                <form action="/reset-password" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">New Password</label>
+                        <div class="input-group">
+                            <input type="password" id="newPass" name="newPassword" class="form-control" placeholder="Enter new password" required autofocus />
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePass('newPass', this)">👁️</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Confirm New Password</label>
+                        <div class="input-group">
+                            <input type="password" id="confirmPass" name="confirmPassword" class="form-control" placeholder="Confirm new password" required />
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePass('confirmPass', this)">👁️</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-action w-100">Update Password & Login</button>
+                </form>
+
+                <script>
+                    function togglePass(inputId, btn) {
+                        const input = document.getElementById(inputId);
+                        if (input.type === "password") {
+                            input.type = "text";
+                            btn.innerText = "🙈";
+                        } else {
+                            input.type = "password";
+                            btn.innerText = "👁️";
+                        }
+                    }
+                </script>
+            <% } %>
+
+        </div>
+    </div>
+</div>  

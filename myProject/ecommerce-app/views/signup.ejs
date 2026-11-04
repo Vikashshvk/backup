@@ -1,0 +1,109 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+    .auth-card {
+        background: var(--card-bg, #ffffff) !important;
+        border: 1px solid var(--card-border, rgba(0,0,0,0.08)) !important;
+        border-radius: 20px;
+        box-shadow: var(--card-shadow, 0 15px 35px rgba(0,0,0,0.08)) !important;
+        backdrop-filter: blur(12px);
+    }
+    
+    /* Input Text & Label Fix for Light & Dark Mode */
+    .form-label {
+        color: var(--text-primary, #0f172a) !important;
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.8) !important;
+        color: #0f172a !important;
+        border: 1px solid rgba(148, 163, 184, 0.4) !important;
+        border-radius: 10px;
+    }
+
+    .form-control::placeholder {
+        color: #64748b !important;
+    }
+
+    /* Dark Mode Specific Overrides */
+    body.dark-theme .form-control {
+        background-color: rgba(15, 23, 42, 0.8) !important;
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    body.dark-theme .form-control::placeholder {
+        color: #94a3b8 !important;
+    }
+
+    .form-control:focus {
+        border-color: #10b981 !important;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.3) !important;
+    }
+
+    .btn-auth {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: #ffffff;
+        font-weight: 700;
+        border-radius: 10px;
+        padding: 10px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-auth:hover {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-toggle-eye {
+        border-color: rgba(148, 163, 184, 0.4) !important;
+        color: var(--text-primary, #0f172a) !important;
+    }
+
+    body.dark-theme .btn-toggle-eye {
+        border-color: rgba(255, 255, 255, 0.25) !important;
+        color: #ffffff !important;
+    }
+</style>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5 col-lg-4">
+        <div class="card auth-card p-4">
+            <h3 class="mb-4 text-center fw-bold">Create Account</h3>
+
+            <form action="/signup" method="POST">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Username</label>
+                    <input type="text" name="username" class="form-control" placeholder="Enter username" required autofocus />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter email" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    <div class="input-group">
+                        <input type="password" id="signupPass" name="password" class="form-control" placeholder="Enter password" required />
+                        <button class="btn btn-outline-secondary btn-toggle-eye" type="button" onclick="togglePass('signupPass', this)">👁️</button>
+                    </div>
+                </div>
+                <button class="btn btn-auth w-100 mb-2">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePass(inputId, btn) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            btn.innerText = "🙈";
+        } else {
+            input.type = "password";
+            btn.innerText = "👁️";
+        }
+    }
+</script>

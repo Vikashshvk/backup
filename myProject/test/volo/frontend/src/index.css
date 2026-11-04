@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body,
+html,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #07050d;
+}
+
+/* Desktop screen handling */
+@media (min-width: 768px) {
+  .sidebar-container {
+    display: flex !important;
+    width: 380px !important;
+    flex-shrink: 0;
+  }
+  .chat-container {
+    display: flex !important;
+  }
+  .mobile-back-btn {
+    display: none !important;
+  }
+}

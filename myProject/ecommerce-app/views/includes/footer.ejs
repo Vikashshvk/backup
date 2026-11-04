@@ -1,0 +1,148 @@
+<style>
+    /* 1. Global CSS Theme Variables */
+    :root {
+        --bg-main: radial-gradient(circle at 10% 20%, rgb(240, 244, 248) 0%, rgb(226, 232, 240) 90.1%);
+        --text-primary: #0f172a;
+        --text-secondary: #64748b;
+        --card-bg: rgba(255, 255, 255, 0.9);
+        --card-border: rgba(0, 0, 0, 0.05);
+        --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark-theme {
+        --bg-main: #0b0f19;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --card-bg: rgba(30, 41, 59, 0.85);
+        --card-border: rgba(255, 255, 255, 0.12);
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 2. Page & Element Dynamic Apply */
+    body {
+        background: var(--bg-main) !important;
+        color: var(--text-primary) !important;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Cards Fix for Dark Mode */
+    .product-card, .product-detail-card {
+        background: var(--card-bg) !important;
+        border: 1px solid var(--card-border) !important;
+        box-shadow: var(--card-shadow) !important;
+        backdrop-filter: blur(12px);
+    }
+
+    .page-title, .card-title, h2, h3, h4, h5 {
+        color: var(--text-primary) !important;
+    }
+
+    .text-muted, .clamp-text, .hero-subtitle {
+        color: var(--text-secondary) !important;
+    }
+
+    /* 3. Footer Ultra-Glassy Styling */
+    .custom-footer {
+        background: rgba(15, 23, 42, 0.95) !important;
+        backdrop-filter: blur(16px) saturate(180%);
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        color: #f8fafc !important;
+    }
+
+    .footer-link {
+        color: #e2e8f0 !important;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: #fbbf24 !important;
+    }
+
+    .theme-toggle-btn {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff !important;
+        border-radius: 30px;
+        padding: 6px 16px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+    }
+
+    .theme-toggle-btn:hover {
+        background: #f59e0b;
+        color: #0f172a !important;
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+    }
+</style>
+
+<footer class="custom-footer pt-4 pb-3 mt-auto">
+    <div class="container">
+        <div class="row gy-3 align-items-center border-bottom border-secondary border-opacity-50 pb-3">
+            
+            <!-- Brand Info -->
+            <div class="col-md-4 text-center text-md-start">
+                <a class="text-white text-decoration-none fw-bold fs-5 d-inline-block mb-1" href="/listings">
+                    🛍️ <span style="background: linear-gradient(135deg, #fbbf24, #f87171); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ShopEase</span>
+                </a>
+                <p class="small text-secondary mb-0">Your ultimate e-commerce marketplace experience.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4 text-center">
+                <div class="d-flex justify-content-center gap-3 fs-6">
+                    <a href="/listings" class="footer-link">Home</a>
+                    <a href="/listings" class="footer-link">Products</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
+            </div>
+
+            <!-- Dark Mode Switcher -->
+            <!-- <div class="col-md-4 text-center text-md-end">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-end gap-2">
+                    <button id="darkModeToggle" class="btn theme-toggle-btn d-flex align-items-center gap-2">
+                        <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+                    </button>
+                </div>
+            </div> -->
+
+        </div>
+
+        <!-- Copyright Line -->
+        <div class="pt-3 text-center small text-secondary">
+            &copy; 2026 ShopEase Express. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Dark Mode Toggle Script -->
+<script>
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    function applyTheme(isDark) {
+        if (isDark) {
+            document.body.classList.add('dark-theme');
+            themeIcon.innerText = '☀️';
+            themeText.innerText = 'Light Mode';
+        } else {
+            document.body.classList.remove('dark-theme');
+            themeIcon.innerText = '🌙';
+            themeText.innerText = 'Dark Mode';
+        }
+    }
+
+    // Load Saved Theme
+    if (localStorage.getItem('theme') === 'dark') {
+        applyTheme(true);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const isDarkNow = !document.body.classList.contains('dark-theme');
+        applyTheme(isDarkNow);
+        localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+    });
+</script>

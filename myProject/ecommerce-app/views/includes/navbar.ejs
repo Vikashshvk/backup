@@ -1,0 +1,517 @@
+<style>
+    /* Fixed Height Ultra Glassmorphic Navbar */
+    .custom-navbar {
+        background: rgba(15, 23, 42, 0.75) !important;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.4rem 0.8rem !important;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        height: 56px !important; /* Fixed Navbar Height */
+    }
+    /* Modal H4 Heading Permanent White Fix */
+.modal-content h4,
+.modal-body h4 {
+    color: #ffffff !important;
+}
+
+    /* Brand Logo & Hover Effect */
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.25rem;
+        color: #ffffff !important;
+        letter-spacing: -0.5px;
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+        transform: scale(1.05);
+    }
+
+    .brand-highlight {
+        background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Search Bar Wrapper */
+    .nav-search-form {
+        max-width: 300px;
+        flex-grow: 1;
+    }
+
+    .search-input-group {
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border-radius: 50px;
+        padding: 2px 6px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 34px;
+    }
+
+    .search-input-group:focus-within {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: #f59e0b !important;
+        box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Custom Search Input */
+    .custom-glass-input {
+        background: none !important;
+        background-color: transparent !important;
+        border: none !important;
+        outline: none !important;
+        color: #ffffff !important;
+        box-shadow: none !important;
+        font-size: 0.82rem;
+        font-weight: 500;
+        width: 100%;
+        padding: 2px 6px;
+    }
+
+    .custom-glass-input:-webkit-autofill,
+    .custom-glass-input:-webkit-autofill:hover,
+    .custom-glass-input:-webkit-autofill:focus,
+    .custom-glass-input:-webkit-autofill:active {
+        -webkit-text-fill-color: #ffffff !important;
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        transition: background-color 5000s ease-in-out 0s !important;
+    }
+
+    .custom-glass-input::placeholder {
+        color: #94a3b8 !important;
+    }
+
+    /* Premium Mic Button */
+    .btn-mic-glass {
+        background: rgba(245, 158, 11, 0.15) !important;
+        border: 1px solid rgba(245, 158, 11, 0.3) !important;
+        color: #f59e0b !important;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        min-width: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .btn-mic-glass:hover {
+        background: #f59e0b !important;
+        color: #0f172a !important;
+        box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+        transform: scale(1.1);
+    }
+
+    .mic-listening {
+        background: #ef4444 !important;
+        color: #ffffff !important;
+        border-color: #ef4444 !important;
+        animation: pulse-mic-glow 1s infinite alternate;
+    }
+
+    @keyframes pulse-mic-glow {
+        0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); transform: scale(1); }
+        100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.9); transform: scale(1.15); }
+    }
+
+    /* Search Button */
+    .btn-search-outside {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+        color: #0f172a !important;
+        font-weight: 700;
+        border: none !important;
+        border-radius: 30px !important;
+        padding: 3px 12px !important;
+        font-size: 0.78rem;
+        height: 34px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+    }
+
+    .btn-search-outside:hover {
+        background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
+        transform: translateY(-2px);
+    }
+
+    /* Dark Mode Button */
+    .theme-toggle-nav {
+        background: rgba(255, 255, 255, 0.12) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        color: #ffffff !important;
+        border-radius: 20px;
+        padding: 4px 12px !important;
+        font-weight: 600;
+        font-size: 0.8rem;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+    }
+
+    .theme-toggle-nav:hover {
+        background: #f59e0b !important;
+        color: #0f172a !important;
+        box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+        transform: translateY(-2px);
+    }
+
+    /* Glass Navigation Links with Hover Effect */
+    .nav-link-custom {
+        color: #cbd5e1 !important;
+        font-weight: 500;
+        font-size: 0.85rem;
+        padding: 5px 12px !important;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .nav-link-custom:hover {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.12) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(8px);
+        transform: translateY(-2px);
+    }
+
+    /* Glowing Glass Signup Button */
+    .btn-signup-glow {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.9) 0%, rgba(217, 119, 6, 0.9) 100%) !important;
+        backdrop-filter: blur(8px);
+        color: #0f172a !important;
+        font-weight: 700;
+        font-size: 0.82rem;
+        border-radius: 8px;
+        padding: 5px 14px !important;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        transition: all 0.3s ease;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-signup-glow:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
+        color: #ffffff !important;
+    }
+
+    /* Glass Logout Badge */
+    .btn-logout-custom {
+        background: rgba(239, 68, 68, 0.18) !important;
+        backdrop-filter: blur(8px);
+        color: #f87171 !important;
+        border: 1px solid rgba(239, 68, 68, 0.35) !important;
+        font-weight: 600;
+        font-size: 0.82rem;
+        border-radius: 8px;
+        padding: 5px 14px !important;
+        transition: all 0.3s ease;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-logout-custom:hover {
+        background: #ef4444 !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* User Avatar Glass Pill */
+    .user-badge {
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        color: #f1f5f9;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-toggler {
+        border: none;
+        padding: 4px;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(245, 158, 11, 1)' stroke-width='2.5' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+
+    /* ========================================================= */
+    /* FLOATING POPUP MENU FIX FOR MOBILE (NAVBAR HEIGHT FIXED)  */
+    /* ========================================================= */
+    @media (max-width: 991.98px) {
+        .brand-text-mobile {
+            display: none !important;
+        }
+
+        .btn-search-outside {
+            padding: 3px 8px !important;
+            font-size: 0.75rem;
+        }
+
+        /* Floating Popup Style for 3-Line Menu */
+        .navbar-collapse {
+            position: absolute;
+            top: 52px;
+            right: 12px;
+            width: 210px;
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            animation: popupFade 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle-nav {
+            width: 100%;
+        }
+
+        .nav-link-custom, .btn-signup-glow, .btn-logout-custom, .user-badge {
+            width: 100%;
+            justify-content: center;
+        }
+
+        @keyframes popupFade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top">
+  <div class="container-fluid px-1 px-sm-3 d-flex align-items-center justify-content-between flex-nowrap gap-2">
+    
+    <!-- 1. Brand Logo, Home Link & Dark Mode Button (Start me Shifted) -->
+    <div class="d-flex align-items-center gap-2 flex-shrink-0">
+        <a class="navbar-brand d-flex align-items-center gap-1 m-0" href="/listings">
+          <span class="fs-5">🛍️</span> 
+          <span class="brand-highlight brand-text-mobile">ShopEase</span>
+        </a>
+
+        <!-- Home Button (Start me) -->
+        <a class="nav-link nav-link-custom d-none d-lg-inline-flex" href="/listings">Home</a>
+
+        <!-- Dark Mode Button (Start me Logo aur Home ke sath) -->
+        <button id="darkModeToggle" class="btn theme-toggle-nav gap-1 d-none d-lg-inline-flex">
+            <span id="themeIcon">🌙</span> <span id="themeText">Dark</span>
+        </button>
+    </div>
+
+    <!-- 2. SEARCH FORM -->
+    <form class="nav-search-form d-flex align-items-center gap-1 m-0 mx-1" action="/listings" method="GET">
+        <div class="search-input-group">
+            <input type="text" id="searchInput" name="q" class="custom-glass-input ps-2" placeholder="Search..." autocomplete="off" />
+            
+            <!-- Mic Button -->
+            <button class="btn btn-mic-glass" type="button" id="micBtn" title="Search by Voice">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+                  <path d="M3.5 6.5A.5.5 0 0 1 4 7a4 4 0 0 0 8 0 .5.5 0 0 1 1 0 5 5 0 0 1-4.5 4.975V13.5h2a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h2v-1.525A5 5 0 0 1 3 7a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Search Button -->
+        <button class="btn btn-search-outside flex-shrink-0" type="submit">
+            Search
+        </button>
+    </form>
+
+    <!-- 3. Mobile Toggle Button (3-Line Menu) -->
+    <button class="navbar-toggler flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- 4. FLOATING POPUP MENU (Right Side Items) -->
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+      
+      <div class="navbar-nav ms-auto align-items-stretch align-items-lg-center gap-2 mt-2 mt-lg-0">
+        
+        <!-- Mobile View Only Links -->
+        <a class="nav-link nav-link-custom text-center d-lg-none" href="/listings">Home</a>
+        <button id="darkModeToggleMobile" class="btn theme-toggle-nav d-flex align-items-center gap-2 my-1 d-lg-none">
+            <span class="mobileThemeIcon">🌙</span> <span class="mobileThemeText">Dark Mode</span>
+        </button>
+
+        <% if(currUser) { %>
+          <a class="nav-link nav-link-custom text-center" href="/listings/new">＋ Add Product</a>
+        <% } %>
+
+        <% if(!currUser) { %>
+          <a class="nav-link nav-link-custom text-center" href="/login">Login</a>
+          <a class="nav-link btn-signup-glow text-center" href="/signup">Sign Up</a>
+        <% } %>
+
+        <% if(currUser) { %>
+          <div class="user-badge d-flex align-items-center gap-2 my-1 my-lg-0">
+            <span>👤</span>
+            <span><%= currUser.username %></span>
+          </div>
+          <button class="btn nav-link btn-logout-custom text-center" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            Logout
+          </button>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- LOGOUT CONFIRMATION MODAL -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 16px; overflow: hidden; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px); color: #fff; border: 1px solid rgba(255, 255, 255, 0.15);">
+            <div class="modal-header border-0 pb-0 justify-content-end">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <div class="fs-1 mb-2">⚠️</div>
+                <h4 class="fw-bold mb-2">Confirm Logout</h4>
+                <p class="text-secondary">Are you sure you want to log out?</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center pb-4">
+                <button type="button" class="btn btn-outline-light px-4 rounded-3 fw-semibold" data-bs-dismiss="modal">Cancel</button>
+                <a href="/logout" class="btn btn-danger px-4 rounded-3 fw-semibold">Yes, Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts for Dark Mode & Real-time Speech to Text (Mic) -->
+<script>
+    // 1. Dark Mode Logic
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const toggleBtnMobile = document.getElementById('darkModeToggleMobile');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    const mobileThemeIcons = document.querySelectorAll('.mobileThemeIcon');
+    const mobileThemeTexts = document.querySelectorAll('.mobileThemeText');
+
+    function applyTheme(isDark) {
+        if (isDark) {
+            document.body.classList.add('dark-theme');
+            if(themeIcon) themeIcon.innerText = '☀️';
+            if(themeText) themeText.innerText = 'Light';
+            mobileThemeIcons.forEach(icon => icon.innerText = '☀️');
+            mobileThemeTexts.forEach(text => text.innerText = 'Light Mode');
+        } else {
+            document.body.classList.remove('dark-theme');
+            if(themeIcon) themeIcon.innerText = '🌙';
+            if(themeText) themeText.innerText = 'Dark';
+            mobileThemeIcons.forEach(icon => icon.innerText = '🌙');
+            mobileThemeTexts.forEach(text => text.innerText = 'Dark Mode');
+        }
+    }
+
+    if (localStorage.getItem('theme') === 'dark') {
+        applyTheme(true);
+    }
+
+    function toggleThemeHandler() {
+        const isDarkNow = !document.body.classList.contains('dark-theme');
+        applyTheme(isDarkNow);
+        localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+    }
+
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleThemeHandler);
+    if (toggleBtnMobile) toggleBtnMobile.addEventListener('click', toggleThemeHandler);
+
+    // 2. Real-Time Speech-To-Text Logic
+    const micBtn = document.getElementById('micBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+        const recognition = new SpeechRecognition();
+        
+        recognition.continuous = false;
+        recognition.interimResults = true;
+        recognition.lang = 'hi-IN';
+
+        micBtn.addEventListener('click', () => {
+            try {
+                recognition.start();
+                micBtn.classList.add('mic-listening');
+                searchInput.value = "";
+                searchInput.placeholder = "Listening...";
+            } catch (err) {
+                recognition.stop();
+            }
+        });
+
+        recognition.onresult = (event) => {
+            let currentTranscript = "";
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                currentTranscript += event.results[i][0].transcript;
+            }
+            searchInput.value = currentTranscript;
+        };
+
+        recognition.onspeechend = () => {
+            recognition.stop();
+            micBtn.classList.remove('mic-listening');
+            
+            if (searchInput.value.trim() !== "") {
+                setTimeout(() => {
+                    searchInput.form.submit();
+                }, 800);
+            }
+        };
+
+        recognition.onerror = () => {
+            micBtn.classList.remove('mic-listening');
+            searchInput.placeholder = "Search...";
+        };
+
+        recognition.onend = () => {
+            micBtn.classList.remove('mic-listening');
+            if (!searchInput.value) {
+                searchInput.placeholder = "Search...";
+            }
+        };
+
+    } else {
+        micBtn.addEventListener('click', () => {
+            alert('Aapke browser me Voice Recognition supported nahi hai. Kripya Chrome use karein.');
+        });
+    }
+</script>

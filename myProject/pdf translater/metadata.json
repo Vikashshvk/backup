@@ -1,0 +1,6 @@
+{
+  "name": "ChotuAI - Custom Model & Learnable AI",
+  "description": "A minimalist ChatGPT-like AI powered by its own custom autonomous neural engine with child-like interactive training, voice recognition, dark mode, offline history, API playground, and cross-device sync.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

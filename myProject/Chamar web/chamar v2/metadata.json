@@ -1,0 +1,6 @@
+{
+  "name": "Chamar Clan Community Fund",
+  "description": "A modern, transparent, and user-friendly community fund management platform for the Chamar Clan to collect, track contributions, and manage community expenses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
