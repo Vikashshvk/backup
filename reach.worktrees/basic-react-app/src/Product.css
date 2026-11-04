@@ -1,0 +1,19 @@
+
+.Product {
+  border: 1px solid rgb(29, 27, 27);
+  border-radius: 23px;
+  /* padding: 1px; */
+  width: 240px;
+  min-height: 210px;
+  margin-top: 15px;
+  
+  /* Text aur elements ko center karne ke liye */
+  text-align: center;
+  
+  /* Box ko page par center me lane ke liye */
+  /* margin: 10px auto;  */
+  margin-left: 15px;
+  align-content: center;
+   overflow:hidden;
+  
+}

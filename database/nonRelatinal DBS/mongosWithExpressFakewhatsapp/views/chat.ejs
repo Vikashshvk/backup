@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <h1>mini whatsapp</h1>
+     <form action="/chat/new">
+          <button class="btn btn-dark  new-btn " >Add new chat</button>
+     </form>
+     <% for( let chat of allchat) { %>
+        <div class="chat">
+            <p class="box" id="one" ><b>From:</b> <%= chat.from %></p>
+            <div class="msg">
+                <p class="box" id="two" ><b>Message:</b> <%= chat.msg %></p>
+            </div>
+            <p class="box"id="three"><b>To:</b> <%= chat.to %></p>
+      
+        
+        <div class="mix-btn">
+            <form action="/chat/<%=chat.id%>?_method=DELETE" method="POST"><button class="btn btn-dark">Remove</button></form> 
+            <form class="show-btn" action="/chat/<%= chat.id%>/show" method="get" ><button class="btn btn-dark" ex-btn >Expand</button></form>
+        </div>
+       
+    </div> 
+    <% } %>
+     
+</body> 
+</html>

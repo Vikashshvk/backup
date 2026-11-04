@@ -1,0 +1,35 @@
+
+.chat{
+    display: inline-block;
+    margin-right: 10px;
+    background-color: beige;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.new-btn{
+    margin-left: 10px;
+}
+
+.mix-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ex-btn{
+    margin-left: 10px;
+
+}
+
+.up-btn{
+   background-color: #fe424d !important;
+    color: white;
+    border: none !important;
+}
+
+.msg-show{
+    height: 171px;
+}
